@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="CSS_About.css">
+    <link rel="stylesheet" href="Jam.css">
+</head>
+
+<body>
+    <header>
+        <button class="burger" onclick="toggleMenu()">
+        </button>
+        <div class="menu">
+            <div></div>
+            <div style="transition-delay: 0.1s"></div>
+            <div style="transition-delay: 0.2s"></div>
+            <div style="transition-delay: 0.35"></div>
+            <div style="transition-delay: 0.4s"></div>
+            <ul>
+                <li style="animation-delay: 0.45">
+                    <a href="#home">About</a>
+                </li>
+                <li style="animation-delay: 0.55">
+                    <a href="#home">Services</a>
+                </li>
+                <li style="animation-delay: 0.65"> <a href="#home">Products</a>
+                </li>
+                <li style="animation-delay: 0.75">
+                    <a href="#home">Contact</a>
+                </li>
+                <li style="animation-delay: 0.85">
+                    <a href="About Developer.html">About Developer</a>
+                </li>
+            </ul>
+        </div>
+        <script type="text/javascript">
+            const toggleMenu = () => document.body.classList.toggle("open");
+        </script>
+        <h1>Sistem informasi Quality time berbasis website</h1>
+    </header>
+    <h2>About Developer:</h2>
+    <div class="container">
+            <img src="Yosia.jpg" class="nokia"><br>
+            <p class="nama">Yosia Gurning</p>
+            <img src="Yenny.jpg" class="nokia">
+            <p class="nama">Yenny Gurning</p>
+            <img src="Jappy.jpg" class="nokia">
+            <p class="nama">Jappy Sirait</p>
+            <img src="imel.jpg" class="nokia">
+            <p class="nama">Imel Sinaga</p>
+            <img src="Jonathan.jpg" class="nokia">
+            <p class="nama">Jonathan Tamba</p>
+    </div>
+    <div class="jam">
+        <div class="datetime">
+            <div class="date">
+                <span id="dayname">Day</span>,
+                <span id="month">Month</span>,
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+            </div>
+            <div class="time">
+                <span id="hour">00</span>:
+                <span id="minutes">00</span>:
+                <span id="seconds">00</span>
+                <span id="period">AM</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+
+            if (hou == 0) {
+                hou = 12;
+            }
+            if (hou > 12) {
+                hou = hou - 12;
+                pe = "PM";
+            }
+
+            Number.prototype.pad = function (digits) {
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+            }
+
+            var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "Desember"];
+            var week = ["sunday", "Monday", "Tuesday", "Wednesday", "Thrusday", "Friday", "Saturday"];
+            var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+            for (var i = 0; i < ids.length; i++)
+                document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+        }
+
+        function initClock() {
+            updateClock();
+            window.setInterval("updateClock()", 1);
+        }
+    </script>
+    <footer class="foot">
+        <h4>Copyright By : Kelompok 4 </h4>
+    </footer>
+</body>
+
+</html>
